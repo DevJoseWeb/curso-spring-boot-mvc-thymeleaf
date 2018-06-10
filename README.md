@@ -10,11 +10,11 @@ Marcio Ballem: https://www.udemy.com/spring-boot-mvc-com-thymeleaf**
 - 
 
 ## Tenconlogias usadas/outros
-- JPA com Hybernate
+- JPA com Hibernate
 - Bootstrap 4
 - Thymeleaf
 - Spring Boot 
 - Spring MVC
 
 ## IDEs
-- 
+- [Spring Tool Suite](https://spring.io/tools)
