@@ -47,6 +47,44 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- WEB JARS -->
+		<!-- vincula a url da pagina com a dependencia no projeto. webjars vai 
+			herdar a versao do spring boot -->
+		<!-- p encontrar cada dependencia do web jars, tem q entrar na pagina oficial 
+			do web jars -->
+		<!-- webjars.org -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>4.1.1</version>
+		</dependency>
+
+		<!-- biblioteca q possui icones -->
+		<!-- useiconic.com/open/ -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>open-iconic</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.3.1-1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>jquery-mask-plugin</artifactId>
+			<version>1.14.15</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- transforma o projeto final em .jar executavel -->
