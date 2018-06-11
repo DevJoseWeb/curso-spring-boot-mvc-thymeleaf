@@ -11,22 +11,27 @@ import javax.persistence.TypedQuery;
 public abstract class AbstractDao<T, PK extends Serializable> {
 
 	@SuppressWarnings("unchecked")
-	//atribui qual o tipo da entidade que a operacao que vem de um dao especifico como CargoDAO, DepartamentoDAO, esta passando para abstractDao
-	//se ta fazendo uma consulta em cargoDao, a classe de entidade q vai fazer a consulta é Cargo
-	//esse recurso declarado atricuido a entityClass serve p pegar essa entidade a partir da assinatura da classe abstractDao
+	/*atribui qual o tipo da entidade que a operacao que vem de um dao especifico como 
+	CargoDAO, DepartamentoDAO, esta passando para abstractDao*/
+	/*se ta fazendo uma consulta em cargoDao, a classe de entidade q vai fazer a consulta é Cargo
+	esse recurso declarado atricuido a entityClass serve p pegar essa entidade a partir 
+	da assinatura da classe abstractDao*/
 	private final Class<T> entityClass = 
 		(Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
-	//o spring injeta o obj entityManager
+	//o spring injeta o entity entityManager
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	//se tiver a necessidade de realizar uma consulta q abstractdao n fornece. entao pode usar esse metodo p ter acesso aos recursos da jpa p realizar essa consulta
+	/*se tiver a necessidade de realizar uma consulta q abstractdao n fornece. entao pode 
+	usar esse metodo p ter acesso aos recursos da jpa p realizar essa consulta*/
 	protected EntityManager getEntityManager() {
 		return entityManager;
 	}
 
-	//nos metodos save, update e delete, n foi utilizado o abrir transacao e depois da operacao persist, merge ou operacao de consulta, commitar a transacao. a parte de transacao sera gerenciada pelo spring, essa configuracao sera feita na camada de servico
+	/*nos metodos save, update e delete, n foi utilizado o abrir transacao e depois da operacao 
+	persist, merge ou operacao de consulta, commitar a transacao. a parte de transacao sera 
+	gerenciada pelo spring, essa configuracao sera feita na camada de servico*/
 	public void save(T entity) {
 		entityManager.persist(entity);
 	}
@@ -46,7 +51,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
 	public List<T> findAll() {
 		return entityManager
 				//getsimplename vai dar a entidade q vai realizar a consulta
-				//entityClas é a expressao .class
+				//entityClass é a expressao .class
 				.createQuery("from " + entityClass.getSimpleName(), entityClass)
 				.getResultList();
 	}

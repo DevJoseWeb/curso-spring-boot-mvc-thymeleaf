@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface DaoGenerico<T> {
 
-	void save(T type);
+	void save(T obj);
 
-	void update(T type);
+	void update(T obj);
 
 	void delete(Long id);
 
