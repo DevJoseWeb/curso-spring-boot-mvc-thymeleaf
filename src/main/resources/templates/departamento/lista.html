@@ -24,6 +24,8 @@
 	
 	        <div class="container" id="listagem">
 	
+				<div th:replace="fragments/alert"></div>
+	
 	            <div class="table-responsive">
 	                <table class="table table-striped table-hover table-sm">
 	                    <thead>
@@ -34,50 +36,21 @@
 	                    </tr>
 	                    </thead>
 	                    <tbody>
-	                    <tr>
-	                        <td>3</td>
-	                        <td>Administração</td>
+	                    <!-- recebe na pagina uma lista e a partir dessa lista, gera cada uma das linhas -->
+	                    <!-- declara um objeto que vai receber um objeto da lista -->
+	                    <tr th:each="d : ${departamentos}">
+	                    <!-- componente responsavel p que imprima dados na tela. objeto.variavelDoObjeto acessar a variavel do objeto -->
+	                        <td th:text="${d.id}">3</td>
+	                        <td th:text="${d.nome}">Administração</td>
 	                        <td colspan="2">
-	                            <a class="btn btn-info btn-sm" href="/departamentos/editar/3" role="button">
+	                        <!-- atribui a id do objeto com a id q sera passado como parametro para o metodo do controller -->
+	                            <a class="btn btn-info btn-sm" th:href="@{/departamentos/editar/{id} (id = ${d.id}) }" role="button">
 	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 	                            </a>
-	                            <button id="btn_departamentos/excluir/3" type="button" class="btn btn-danger btn-sm">
-	                                <span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span>
-	                            </button>
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <td>2</td>
-	                        <td>Contabilidade</td>
-	                        <td colspan="2">
-	                            <a class="btn btn-info btn-sm" href="/departamentos/editar/2" role="button">
-	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
-	                            </a>
-	                            <button type="button" class="btn btn-danger btn-sm">
-	                                <span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span>
-	                            </button>
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <td>1</td>
-	                        <td>Recursos Humanos</td>
-	                        <td colspan="2">
-	                            <a class="btn btn-info btn-sm" href="/departamentos/editar/1" role="button">
-	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
-	                            </a>
-	                            <button type="button" class="btn btn-danger btn-sm" >
-	                                <span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span>
-	                            </button>
-	                        </td>
-	                    </tr>
-	                    <tr>
-	                        <td>4</td>
-	                        <td>Tecnologia da Informação</td>
-	                        <td colspan="2">
-	                            <a class="btn btn-info btn-sm" href="/departamentos/editar/4" role="button">
-	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
-	                            </a>
-	                            <button type="button" class="btn btn-danger btn-sm" >
+	                            <!-- n pode excluir o departamento se existir um cargo vinculado a ele. pois n pode existir um funcionario sem cargo e nem um cargo sem departamento -->
+	                            <!-- data-toggle diz ao bootstrap q vai ser usado o modal. data-target diz quem o modal deve abrir -->
+	                            <!-- btn_ vai utilizar p no js ter acesso ao click do botao -->
+	                            <button th:id="${ 'btn_departamentos/excluir/' + d.id}" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
 	                                <span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span>
 	                            </button>
 	                        </td>
@@ -85,6 +58,10 @@
 	                    </tbody>
 	                </table>
 	            </div>
+	        </div>
+	        
+	        <div th:replace="fragments/modal :: modal">
+	        
 	        </div>
 	
 	    </section>

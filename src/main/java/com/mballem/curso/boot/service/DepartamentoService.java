@@ -42,4 +42,11 @@ public class DepartamentoService implements ServiceGenerico<Departamento> {
 	public List<Departamento> buscarTodos() {
 		return dao.findAll();
 	}
+
+	public boolean departamentoTemCargo(Long id) {
+		if(buscarPorId(id).getCargos().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
 }

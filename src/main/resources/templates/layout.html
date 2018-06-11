@@ -65,6 +65,25 @@
 	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	    
+		var url = '';
+		
+	  	//vai identificar q clicou no botao a partir da expressao abaixo 
+	  	//id* p q saiba q ta analisando o valor do id, recebe btn_
+	  	//sempre q clicar em um componente q tenha btn_ como valor inicial do id, vai cair na funcao
+		$('button[id*="btn_"]').click(function(){
+			//vai concatenar a url com o valor do id q tem na tag button
+			// $(this) faz com q o jquery utilize os valores do componente q esta utilizando nessa operacao, o button. vai recuperar o valor do id atravez do attr
+			//so q quer toda a url sem o btn_, vai dividir a string em um array de 2 partes e vai pegar a segunda
+			url = "http://localhost:8081/" + $(this).attr('id').split("_")[1];
+		})
+	
+		//tem q passar a url p o botao de confirmacao do modal
+		//vai esperar o click do botao, so q vai ser do q tem o id ok_confirm
+		$('#ok_confirm').click(function(){
+			//vai fazer a solicitacao p o servidor a partir da url
+			document.location.href = url;
+		})
+		
 		$(function() {
 			$('[data-toggle="popover"]').popover();
 		});
