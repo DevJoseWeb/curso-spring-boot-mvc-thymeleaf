@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-public class AbstractDao<T, PK extends Serializable> {
+public abstract class AbstractDao<T, PK extends Serializable> {
 
 	@SuppressWarnings("unchecked")
 	//atribui qual o tipo da entidade que a operacao que vem de um dao especifico como CargoDAO, DepartamentoDAO, esta passando para abstractDao
