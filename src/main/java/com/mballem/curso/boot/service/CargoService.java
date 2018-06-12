@@ -56,4 +56,11 @@ public class CargoService implements ServiceGenerico<Cargo> {
 	public List<Cargo> buscarTodos() {
 		return dao.findAll();
 	}
+
+	public boolean cargoTemFuncionario(Long id) {
+		if(buscarPorId(id).getFuncionarios().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
 }
