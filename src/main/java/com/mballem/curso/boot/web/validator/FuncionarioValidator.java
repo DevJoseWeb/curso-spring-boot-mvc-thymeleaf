@@ -14,16 +14,19 @@ public class FuncionarioValidator implements Validator{
 	//o argumento é o obj q esta no formulario
 	public boolean supports(Class<?> classeDoFormulario) {
 		//se for true, vai p metodo validate
+		System.out.println("\n\n=======retorno"+Funcionario.class.equals(classeDoFormulario));
 		return Funcionario.class.equals(classeDoFormulario);
 	}
 
 	@Override
 	//2 argumentos, object é q esta recebendo do formulario, o errors é o obj q vai lidar com a validacao
 	public void validate(Object obj, Errors errors) {
+		System.out.println("\n\n============primeiraLinha");
 		Funcionario f = (Funcionario) obj;
 		//no formulario foi digitado a data de entrada e recupera aqui
 		LocalDate entrada = f.getDataEntrada();
-		if(f.getDataSaida() == null) {
+		System.out.println("\n\n===================Data: "+f.getDataSaida()+"\n\n");
+		if(f.getDataSaida().equals("")) {
 			return;
 		}
 		if(f.getDataSaida().isBefore(entrada)) {
