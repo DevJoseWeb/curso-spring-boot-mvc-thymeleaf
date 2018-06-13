@@ -8,7 +8,9 @@
 			<nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link " href="/"> <i
-							class="oi oi-home"></i> <span>Home</span>
+							class="oi oi-home"></i> 
+							<!-- substituo o texto pelo chave do messages.properties -->
+							<span th:text="#{sidebar.link.home}"></span>
 					</a></li>
 				</ul>
 
