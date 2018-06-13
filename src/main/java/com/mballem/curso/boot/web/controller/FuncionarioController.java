@@ -10,7 +10,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,7 @@ import com.mballem.curso.boot.domain.Funcionario;
 import com.mballem.curso.boot.domain.UF;
 import com.mballem.curso.boot.service.CargoService;
 import com.mballem.curso.boot.service.FuncionarioService;
+import com.mballem.curso.boot.web.validator.FuncionarioValidator;
 
 @Controller
 @RequestMapping("/funcionarios")
@@ -33,6 +36,15 @@ public class FuncionarioController {
 	
 	@Autowired
 	private CargoService cargoService;
+	
+	//faz com q seja o primeiro metodo dentro dessa classe 
+	//q sera executado
+	@InitBinder
+	//spring validator so vai ser encerrado depois q registrar a classe funcionariovalidator
+	public void initBinder(WebDataBinder binder) {
+		//spring sabe q essa classe vai utilizar a validacao
+		binder.addValidators(new FuncionarioValidator());
+	}
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Funcionario funcionario) {
