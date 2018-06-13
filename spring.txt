@@ -24,7 +24,7 @@ model, define o modelo ou dominio da aplicacao. view, interacao com o usuario. c
 @modelattribute: o spring seta no objeto os dados informados no formularios da pagina quando da submit. no thymelead n é necessario. se usar na assinatura do metodo, ele é executado como retorno p a pagina, preenchendo algum dado no formulario.
 
 -retornar dados:
-@modelmap: coloca como parametro no medoso, adiciona o objeto no modelmap e retorna um string dizendo qual a pagina sem a extensao.
+@modelmap: coloca como parametro no metodo, adiciona o objeto no modelmap e retorna um string dizendo qual a pagina sem a extensao.
 @modelandview: instancia o mav com a pagina de resposta no construtor, adiciona o objeto no mav e retorna esse objeto. pode usar as duas anotacoes juntas.
 -parametro mm, adicionar o objeto ao mm e retornar uma instancia de mav com mm adicionado com o nome da pagina de retorno.
 -redirect: usado p abrir outra pagina. apos salvar um objeto, pode pedir se quer redirecionar p listagem ou n.
